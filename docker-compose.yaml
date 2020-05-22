@@ -7,6 +7,12 @@ services:
   http_server:
     container_name: http-server
     build: ./http-server
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - ./http-server/config/nginx.config:/etc/nginx/sites-enabled/default
+      - ./web-client/app/static:/srv/static
 
   web_client:
     container_name: web-client
