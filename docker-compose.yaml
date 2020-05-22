@@ -3,6 +3,18 @@ services:
   app_server:
     container_name: app-server
     build: ./app-server
+    environment:
+      - FLASK_APP=/srv/app/wsgi.py
+      - FLASK_DEBUG=1
+      - FLASK_SECRET_KEY=sandbox
+      - DB_USER=sandbox
+      - DB_PASSWORD=sandbox
+      - DB_NAME=sandbox
+      - DB_HOST=database:5432
+    volumes:
+      - ./app-server/app:/srv/app
+    command: flask run --host=0.0.0.0 --port=5000
+    # command: gunicorn wsgi:app --chdir /srv/app -b 0.0.0.0:5000
 
   http_server:
     container_name: http-server
