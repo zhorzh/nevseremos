@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app_server:
+    container_name: app-server
+    build: ./app-server
+
+  http_server:
+    container_name: http-server
+    build: ./http-server
+
+  web_client:
+    container_name: web-client
+    build: ./web-client
+
+  database:
+    container_name: postgres
+    image: postgres
