@@ -11,6 +11,16 @@ services:
   web_client:
     container_name: web-client
     build: ./web-client
+    environment:
+      - HOST_URL=http://localhost
+      - API_URL=http://localhost/api
+    volumes:
+      - ./web-client/app/source:/srv/app/source
+      - ./web-client/app/static:/srv/app/static
+      - ./web-client/app/webpack.config.js:/srv/app/webpack.config.js
+    restart: always
+    working_dir: /srv/app
+    command: yarn webpack --watch
 
   database:
     container_name: postgres
