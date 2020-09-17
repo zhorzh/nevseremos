@@ -1,7 +1,6 @@
-import logging
 from os import environ
-import jwt
 from functools import wraps
+import jwt
 from flask import request
 from flask import jsonify
 
@@ -12,13 +11,13 @@ def token_required(roles):
         def wrapper(*args, **kwargs):
             # check authentication header
             if not request.headers.get('Authorization'):
-                return jsonify(error='No authorization header')
+                return jsonify(error='No authorization header'), 403
 
             header = request.headers.get('Authorization')
 
-            if not header.split()[0] == 'Bearer':
+            if header.split()[0] != 'Bearer':
                 return jsonify(error='No Bearer token')
-            elif not len(header.split()) == 2:
+            if len(header.split()) != 2:
                 return jsonify(error='Invalid token')
 
             # verify access token

@@ -29,7 +29,7 @@ class OutputMixin(object):
                if column.key not in exclude}
         if rel:
             for attr, relation in self.__mapper__.relationships.items():
-                # Avoid recursive loop between to tables.
+                # Avoid recursive loop between two tables.
                 if backref == relation.table:
                     continue
                 value = getattr(self, attr)
@@ -59,11 +59,6 @@ class User(OutputMixin, Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     date_created = Column(DateTime, default=datetime.utcnow)
     email = Column(String(256), default=None, unique=True)
-    first_name = Column(String(256), default=None)
-    last_name = Column(String(256), default=None)
-    company_name = Column(String(256), default=None)
-    company_size = Column(String(256), default=None)
-    type_of_activity = Column(String(256), default=None)
     password = Column(String(256), default=None)
     is_active = Column(Boolean, default=True)
     is_admin = Column(Boolean, default=False)
