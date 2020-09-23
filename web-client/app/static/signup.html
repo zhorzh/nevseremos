@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Agoria</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/media.css">
+	<link rel="stylesheet" type="text/css" href="css/modal.css">
+</head>
+<body>
+	<header class="header">
+		<div class="d-flex justify-content-between align-items-center">
+			<div>
+				<img src="img/logo.png" width="225">
+			</div>
+			<div class="[ header_lang ]">
+				<a href="#" data-toggle="modal" data-target="#exampleModal">FR</a>
+				|
+				<a href="#" class="active">NL</a>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="container">
+			<div class="signup">
+				<div class="d-flex justify-content-between [ signup_content ]">
+					<div class="[ signup_desc ]">
+						<p class="[ signup_desc__title ]"><b>How good is your company in its digital transformation?</b></p>
+						<div class="[ white-stick ]"></div>
+						<p class="[ signup_desc__sub-title ]">Find out weather your entreprise is ready for it’s digital transformation in those 3 areas:</p>
+						<ul class="[ signup_desc__benefits ]">
+							<li class="d-flex align-items-center">
+								<img src="img/ico_processes.svg" alt="" width="38" height="38">
+								DIGITISING PROCESS
+							</li>
+							<li class="d-flex align-items-center">
+								<img src="img/ico_innovation.svg" alt="" width="38" height="38">
+								DIGITAL INNOVATION
+							</li>
+							<li class="d-flex align-items-center">
+								<img src="img/Group.svg" alt="" width="38" height="38">
+								DIGITAL CULTURE
+							</li>
+						</ul>
+					</div>
+					<div class="[ signup_form ]">
+						<p class="[ signup_form_enter ]">Enter your business email</p>
+						<input type="text" name="" class="[ input ]" placeholder="Email address">
+						<div class="[ signup_form_policy ]">
+							<label class="custom-radio">
+						  		<input type="radio" checked="checked" name="radio">
+						  		<span class="checkmark"></span>
+						  		I agree with the <a href="#">Privacy Policy</a>
+							</label>
+							<label class="custom-radio">
+						  		<input type="radio" name="radio">
+						  		<span class="checkmark"></span>
+						  		I agree with the <a href="#">Terms and conditions</a>
+							</label>
+						</div>
+						<hr>
+						<p>CAPTCHA</p>
+						<button class="regular">REGULAR BUTTON</button>
+						<p class="[ signup_form_free ]"><small>For free and keeping your data private</small></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  	<div class="modal-dialog modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-body">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          	<span aria-hidden="true">&times;</span>
+			        </button>
+			        <p class="[ modal-title ]">Invite a colleague</p>
+			        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis…</p>
+			        <div class="d-flex">
+			        	<input type="text" name="" class="input" placeholder="Enter the email address">
+			        	<button class="[ innovation ] d-flex align-items-center justify-content-center">
+			        		<img src="img/invite.png">
+			        		Invite
+			        	</button>
+			        </div>
+			        
+			        <a href="#" class="[ modal_send-email ]">
+			        	<span class="[ modal_plus ]">+</span>
+			        	Send to an email
+			        </a>
+
+			        <button class="[ innovation mobile ] d-flex align-items-center justify-content-center">
+		        		<img src="img/invite.png">
+		        		Invite
+		        	</button>
+
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/modal-bootstrap.js"></script>
+</body>
+</html>

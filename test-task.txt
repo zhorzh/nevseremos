@@ -1,0 +1,70 @@
+Выполнить один вариант из предложенных
+V1 - Websocket
+This task should show how you can integrate several backend services. Therefore there should be 2 backend services.
+The app itself provides a dashboard with some simple list of real-time data. Some examples of such data are
+* Weather (temperature) in different cities
+* (Crypto-) Currency exchange rates
+First service is classical WSGI application. Preferably you should use Django, but Flask is OK too.
+This app should provide the following functionality
+* Anonymous User can only access README page and login or registration forms
+* User can see list of data available (e.g. list of cities)
+* User can subscribe to up to 5 cities
+* Full list of cities available should be configurable via admin interface (or settings)
+* Dashboard where user sees the data he is subscribed for. E.g. a table with City and Temperature columns.
+* Minimal front-end design required. You may use some free templates, also you should use some layout framework for frontend like bootstrap. You may use default color scheme. But application response should not be plain-text: add (sticky) header and footer, use tables and lists when appropriate.
+
+
+There should be 2nd application, that provides real time data updates.
+* Dashboard page should open websocket connection
+* When value is changed in database (via admin panel or management command), server should push this data to clients
+* Avoid polling: you should not read DB every X seconds. This means that WSGI app should have a way to send data to WebSocket app (HTTP API, Queue service like RabbitMQ or Redis, etc)
+
+
+These are the minimal task set for application. If you have more time and want to show more skills you can implement bonus tasks. They are optional and you can pick any of them in different order.
+Bonus tasks
+* Websocket subscription management
+   * Client subscribes only to updates about data currently shown on the page. E.g. if dashboard application shows only London and Berlin, the server should not push Paris update to this client
+   * Authentication - allow to subscribe to updates only for cities that user selected in main application. This should be server side validation, even if user modifies scripts or run code via developer tools, he should not be able to listen to other cities updates.
+* Prepare settings.py configuration to be used in different environments (e.g. local, dev server, prod server). Sensible data like passwords, secrets, api keys should not be committed to git
+* Task to automatically download and update new data via some API
+* Unit Test coverage
+* Provide deployment instructions & configuration
+* Integrate social login (Facebook, Google, any other OAuth provider of your choice)
+* Do the task as separate backend and frontend applications. Backend should provide REST or RPC API
+   * Never reload the front-end page, even for authentication
+* Prepare static files collection for production - this may include
+   * minifying
+   * merging JS or CSS files to single file
+   * add hash to file names for browser cache
+
+V2 - Report page
+You need to create a Django project, that should meet the following requirements
+* Anonymous User can only access README page and login or registration forms
+* User can create, delete or see list of his own entries only
+* To create an entry user provide this data:
+   * date
+   * distance
+   * duration
+* When user see list of entries, application also shows average speed
+* User should be able to filter list of entries by date range
+* There should be a page with per-week statistics for last year - week number, total amount of entries, total distance, total duration and weekly average speed.
+* Minimal front-end design required. You may use some free templates, also you should use some layout framework for frontend like bootstrap. You may use default color scheme. But application response should not be plain-text, add (sticky) header and footer, tables and lists when appropriate.
+
+
+These are the minimal task set for application. If you have more time and want to show more skills you can implement bonus tasks. They are optional and you can pick any of them in different order.
+Bonus tasks
+* Prepare settings.py configuration to be used in different environments (e.g. local, dev server, prod server). Sensible data like passwords, secrets, api keys should not be committed to git
+* Add managers accounts. The permissions should work like this:
+   * User - Can only manage own entries
+   * Manager - Can create users, activate and deactivate them, or reset user’s password. But manager can not access user data.
+   * Admin - Can manage users as managers, and also can see all users’ data and create entries on behalf of other user.
+* Unit Test coverage
+* Provide deployment instructions & configuration
+* Integrate social login (Facebook, Google, any other OAuth provider of your choice)
+* Do the task as separate backend and frontend applications. Backend should provide REST or RPC API
+   * Never reload the front-end page, even for authentication
+* Management command (or another background task, e.g. celery) to email a user his yearly statistic.
+* Prepare static files collection for production - this may include
+   * minifying
+   * merging JS or CSS files to single file
+   * add hash to file names for browser cache

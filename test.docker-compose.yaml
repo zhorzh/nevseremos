@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app_server:
+    container_name: app-server
+    build: ./app-server
+    environment:
+      - FLASK_APP=/srv/app/wsgi.py
+      - FLASK_DEBUG=1
+      - FLASK_SECRET_KEY=test
+      - DB_USER=test
+      - DB_PASSWORD=test
+      - DB_NAME=test
+      - DB_HOST=database:5432
+    volumes:
+      - ./app-server/app:/srv/app
+    command: bash -c "pytest -s -v"
+    # command: bash -c "pytest -s && behave"
+
+  database:
+    container_name: postgres
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_USER=test
+      - POSTGRES_DB=test
+    # volumes:
+    #    - ./postgres-data:/var/lib/postgresql/data
